@@ -6,7 +6,58 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Document</title>
   </head>
-  <body>
+  <body class="bg-gray-100 font-mono">
+    <header class="h-16 flex items-center">
+      <div class="w-3/4 flex place-content-between items-center mx-auto">
+        <div>
+          <img
+            src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png"
+            alt="PokedexLogo"
+            class="h-12 drop-shadow-sm" />
+        </div>
+        <div class="flex p-1 bg-gray-300 rounded-lg">
+          <input
+            type="text"
+            class="block w-100 pl-5 mr-1 pr-3 py-2 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Search Pokemon..."
+            id="searchbar" />
+          <button
+            type="submit"
+            class="px-4 py-2 bg-gray-400 text-white rounded-lg border-gray-300 shadow-sm border hover:bg-blue-700 duration-200 text-sm"
+            id="submit">
+            Submit
+          </button>
+        </div>
+        <nav class="flex">
+          <ul>
+            <a
+              class="mx-3 p-3 px-5 bg-blue-300 rounded-full drop-shadow-sm text-sm hover:bg-blue-400 hover:font-bold duration-200"
+              href=""
+              >HOMEPAGE</a
+            >
+          </ul>
+          <ul>
+            <a
+              class="mx-3 p-3 px-5 bg-blue-300 rounded-full drop-shadow-sm text-sm hover:bg-blue-400 hover:font-bold duration-200"
+              href=""
+              >JOURNAL</a
+            >
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="w-full mt-10 flex flex-wrap place-content-center mx-auto">
+        <div
+          id="pokemonContainer"
+          class="w-100 min-h-60 bg-neutral-300 m-2 rounded-xl shadow-sm"></div>
+        <div id="pokemonContainer" class="w-100 min-h-60 bg-blue-300 m-2"></div>
+        <div id="pokemonContainer" class="w-100 min-h-60 bg-blue-300 m-2"></div>
+        <div id="pokemonContainer" class="w-100 min-h-60 bg-blue-300 m-2"></div>
+        <div id="pokemonContainer" class="w-100 min-h-60 bg-blue-300 m-2"></div>
+      </div>
+    </main>
+    <footer></footer>
     <script src="/Src/main.js"></script>
   </body>
 </html>
