@@ -1,28 +1,5 @@
 const pokemonContainer = document.getElementById("pokemonWrapper");
 
-// fake pokemon for testing
-const pokemons = [
-  {
-    name: "torrent",
-    url: "https://pokeapi.co/api/v2/ability/67/",
-  },
-  {
-    name: "red",
-    url: "https://pokeapi.co/api/v2/version/1/",
-  },
-];
-
-// fake pokemon
-const pokemon = {
-  id: "1",
-  name: "pikachu",
-  sprites: {
-    back_default:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/7.png",
-  },
-  type: "pikachu",
-};
-
 // display pokemon function
 const displayCard = (pokemon) => {
   const pokemonCard = document.createElement("div");
@@ -81,5 +58,39 @@ const displayCard = (pokemon) => {
 
   pokemonContainer.appendChild(pokemonCard);
 };
+// displayCard(pokemon);
 
-displayCard(pokemon);
+// fetch pokemons function
+const fetchPokemonsArray = async () => {
+  try {
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20");
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const data = await res.json();
+    const pokemonArray = data.results;
+    console.log(pokemonArray);
+    return pokemonArray;
+  } catch (err) {
+    console.error("Error fetching pokemons:", err);
+  }
+};
+
+const fetchPokemon = async () => {
+  try {
+    const pokemonArray = await fetchPokemonsArray();
+    const promises = pokemonArray.map(async (pokemon) => {
+      const res = await fetch(pokemon.url);
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      const data = await res.json();
+      console.log(data);
+      displayCard(data);
+    });
+  } catch (err) {
+    console.error("Error fetching pokemon:", err);
+  }
+};
+
+fetchPokemon();
