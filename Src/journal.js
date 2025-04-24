@@ -90,14 +90,14 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     function addNotes(id) {
-      const pokemonStored = JSON.parse(localStorage.getItem("pokemon")) || [];
+      const pokemonStored = JSON.parse(localStorage.getItem("save")) || [];
       const updatedPokemon = pokemonStored.map((pokemon) => {
         if (id === pokemon.id) {
           return { ...pokemon, notes: pokemonNotes.value };
         }
         return pokemon;
       });
-      localStorage.setItem("pokemon", JSON.stringify(updatedPokemon));
+      localStorage.setItem("save", JSON.stringify(updatedPokemon));
     }
   });
 });
