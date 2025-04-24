@@ -43,26 +43,26 @@ const displayCard = (pokemon) => {
     "hover:bg-red-500",
     "duration-200"
   );
-  
+
   // add event listener to the button
-button.addEventListener("click", function () {
-  //test if the button is working
-  console.log("Button clicked for:", pokemon.name); 
- // creat avariable call save 
-  const save = JSON.parse(localStorage.getItem("save")) || [];
-  //save only the necessary data
-  const shortPokemon = {
-    id: pokemon.id,
-    name: pokemon.name,
-    image: pokemon.sprites.front_default,
-    type: pokemon.types.map(t => t.type.name)
-    // notes: "",
-  };
-  // Add the selected pokemon to the array
-  save.push(shortPokemon); 
-  // push the pokemon to the save variable
-  localStorage.setItem("save", JSON.stringify(save));
-});
+  button.addEventListener("click", function () {
+    //test if the button is working
+    console.log("Button clicked for:", pokemon.name);
+    // creat avariable call save
+    const save = JSON.parse(localStorage.getItem("save")) || [];
+    //save only the necessary data
+    const shortPokemon = {
+      id: pokemon.id,
+      name: pokemon.name,
+      image: pokemon.sprites.front_default,
+      type: pokemon.types.map((t) => t.type.name),
+      notes: "",
+    };
+    // Add the selected pokemon to the array
+    save.push(shortPokemon);
+    // push the pokemon to the save variable
+    localStorage.setItem("save", JSON.stringify(save));
+  });
 
   const image = document.createElement("img");
   image.src = "https://cdn-icons-png.flaticon.com/512/105/105220.png";
@@ -111,8 +111,6 @@ const fetchPokemon = async () => {
   } catch (err) {
     console.error("Error fetching pokemon:", err);
   }
-
-
 };
 
 fetchPokemon();

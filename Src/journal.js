@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const pokemonStored = JSON.parse(localStorage.getItem("pokemon")) || [];
+  const pokemonStored = JSON.parse(localStorage.getItem("save")) || [];
   pokemonStored.forEach((pokemon) => {
     console.log(pokemon);
 
