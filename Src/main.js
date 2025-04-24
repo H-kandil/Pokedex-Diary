@@ -13,7 +13,7 @@ const displayCard = (pokemon) => {
   );
 
   const pokemonImg = document.createElement("img");
-  pokemonImg.src = pokemon.sprites.back_default;
+  pokemonImg.src = pokemon.sprites.front_default;
   pokemonImg.classList.add("h-36", "w-36", "my-auto");
 
   const pokemonName = document.createElement("h2");
@@ -29,7 +29,7 @@ const displayCard = (pokemon) => {
 
   const pokemonInfoType = document.createElement("p");
   pokemonInfoType.classList.add("mb-6");
-  pokemonInfoType.textContent = `Type : ${pokemon.type}`;
+  pokemonInfoType.textContent = `Type : ${pokemon.types.map((t) => t.type.name)}`;
 
   const button = document.createElement("button");
   button.classList.add(
@@ -55,9 +55,10 @@ const displayCard = (pokemon) => {
       id: pokemon.id,
       name: pokemon.name,
       image: pokemon.sprites.front_default,
-      type: pokemon.types.map((t) => t.type.name),
+      type: pokemon.types.map((t) => t.type.name), 
       notes: "",
     };
+    
     // Add the selected pokemon to the array
     save.push(shortPokemon);
     // push the pokemon to the save variable
