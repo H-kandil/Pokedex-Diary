@@ -1,8 +1,12 @@
+// wait For the html Data loaded
 window.addEventListener("DOMContentLoaded", () => {
-  const pokemonStored = JSON.parse(localStorage.getItem("save")) || [];
+  //save pokemon in localstorage or empty
+  const pokemonStored = JSON.parse(localStorage.getItem("save")) || [];  
+  // Data For every pokemon to display it
   pokemonStored.forEach((pokemon) => {
     console.log(pokemon);
 
+    // create HTML element and add styling dynamically
     const pokemonContainer = document.createElement("div");
 
     const pokemonForm = document.createElement("form");
@@ -39,6 +43,7 @@ window.addEventListener("DOMContentLoaded", () => {
     pokemonType.classList.add("uppercase");
     pokemonType.textContent = pokemon.type;
 
+    // Textarea for note
     const pokemonNotes = document.createElement("textarea");
     pokemonNotes.name = "notes";
     pokemonNotes.id = pokemon.id + "notes";
@@ -74,6 +79,7 @@ window.addEventListener("DOMContentLoaded", () => {
       "duration-200"
     );
 
+    // Add element to the page
     pokemonForm.appendChild(pokemonImg);
     pokemonContainer.appendChild(pokemonForm);
     pokemonForm.appendChild(pokemonInfoContainer);
@@ -85,10 +91,12 @@ window.addEventListener("DOMContentLoaded", () => {
     pokemonForm.appendChild(pokemonNotes);
     pokemonForm.appendChild(submitNotes);
 
+    // save notes when button is click
     submitNotes.addEventListener("click", () => {
       addNotes(pokemon.id);
     });
 
+    // save and update notes through id
     function addNotes(id) {
       const pokemonStored = JSON.parse(localStorage.getItem("save")) || [];
       const updatedPokemon = pokemonStored.map((pokemon) => {
@@ -97,6 +105,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         return pokemon;
       });
+      // save updated data in localstorage
       localStorage.setItem("save", JSON.stringify(updatedPokemon));
     }
   });
