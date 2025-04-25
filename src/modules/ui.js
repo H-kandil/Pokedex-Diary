@@ -29,7 +29,9 @@ const displayCard = (pokemon) => {
 
   const pokemonInfoType = document.createElement("p");
   pokemonInfoType.classList.add("mb-6");
-  pokemonInfoType.textContent = `Type : ${pokemon.types.map((t) => t.type.name)}`;
+  pokemonInfoType.textContent = `Type : ${pokemon.types.map(
+    (t) => t.type.name
+  )}`;
 
   const button = document.createElement("button");
   button.classList.add(
@@ -55,10 +57,10 @@ const displayCard = (pokemon) => {
       id: pokemon.id,
       name: pokemon.name,
       image: pokemon.sprites.front_default,
-      type: pokemon.types.map((t) => t.type.name), 
+      type: pokemon.types.map((t) => t.type.name),
       notes: "",
     };
-    
+
     // Add the selected pokemon to the array
     save.push(shortPokemon);
     // push the pokemon to the save variable
@@ -80,38 +82,4 @@ const displayCard = (pokemon) => {
   pokemonContainer.appendChild(pokemonCard);
 };
 // displayCard(pokemon);
-
-// fetch pokemons function
-const fetchPokemonsArray = async () => {
-  try {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20");
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const data = await res.json();
-    const pokemonArray = data.results;
-    console.log(pokemonArray);
-    return pokemonArray;
-  } catch (err) {
-    console.error("Error fetching pokemons:", err);
-  }
-};
-
-const fetchPokemon = async () => {
-  try {
-    const pokemonArray = await fetchPokemonsArray();
-    const promises = pokemonArray.map(async (pokemon) => {
-      const res = await fetch(pokemon.url);
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      const data = await res.json();
-      console.log(data);
-      displayCard(data);
-    });
-  } catch (err) {
-    console.error("Error fetching pokemon:", err);
-  }
-};
-
-fetchPokemon();
+export { displayCard };
