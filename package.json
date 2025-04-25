@@ -9,7 +9,7 @@
   "name": "pokedex",
   "source": [
     "index.html",
-    "./src/journal.html"
+    "./src/pages/journal.html"
   ],
   "scripts": {
     "dev": "parcel",
