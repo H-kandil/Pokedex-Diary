@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const pokemonStored = JSON.parse(localStorage.getItem("save")) || [];
+  const pokemonStored = JSON.parse(localStorage.getItem("save")) || [];  
   pokemonStored.forEach((pokemon) => {
     console.log(pokemon);
 
@@ -97,6 +97,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         return pokemon;
       });
+
       localStorage.setItem("save", JSON.stringify(updatedPokemon));
     }
   });

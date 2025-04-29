@@ -1,36 +1,37 @@
-import { displayCard } from "./ui";
+const pokemonURL = "https://pokeapi.co/api/v2/pokemon/";
 
-// fetch pokemons function
-const fetchPokemonsArray = async () => {
-  try {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20");
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
+const fetchPokemon = async (searchPokemon) => {
+  if (searchPokemon) {
+    const searchResult = await fetch(pokemonURL + searchPokemon);
+
+    if (!searchResult.ok) {
+      throw new Error(`HTTP error! status:${searchResult.status}`);
     }
     const data = await res.json();
-    const pokemonArray = data.results;
-    console.log(pokemonArray);
-    return pokemonArray;
-  } catch (err) {
-    console.error("Error fetching pokemons:", err);
-  }
-};
-
-const fetchPokemon = async () => {
-  try {
-    const pokemonArray = await fetchPokemonsArray();
-    const promises = pokemonArray.map(async (pokemon) => {
-      const res = await fetch(pokemon.url);
+    return data;
+  } else {
+    try {
+      const res = await fetch(pokemonURL);
       if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
+        throw new Error("HTTP error! status: ${res.status}");
       }
       const data = await res.json();
-      console.log(data);
-      displayCard(data);
-    });
-  } catch (err) {
-    console.error("Error fetching pokemon:", err);
+      const pokemonArray = data.results;
+
+      const promises = await Promise.all(
+        pokemonArray.map(async (pokemon) => {
+          const pokemonNewUrl = pokemon.url;
+          const res = await fetch(pokemonNewUrl);
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return await res.json();
+        })
+      );
+      return promises;
+    } catch (error) {
+      console.error("Error fetching", error);
+    }
   }
 };
-
 export { fetchPokemon };
