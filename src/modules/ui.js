@@ -6,7 +6,7 @@ const displayCard = (pokemon) => {
   pokemonCard.classList.add(
     "flex",
     "bg-white",
-    "min-w-100",
+    "w-120",
     "m-2",
     "rounded-xl",
     "shadow-sm"
@@ -25,7 +25,7 @@ const displayCard = (pokemon) => {
 
   const pokemonInfo = document.createElement("p");
   pokemonInfo.classList.add("mb-1");
-  pokemonInfo.textContent = `ID : ${pokemon.id} | Name : ${pokemon.name}`;
+  pokemonInfo.textContent = `ID : ${pokemon.id}`;
 
   const pokemonInfoType = document.createElement("p");
   pokemonInfoType.classList.add("mb-6");
@@ -80,6 +80,8 @@ const displayCard = (pokemon) => {
   pokemonCard.appendChild(button);
 
   pokemonContainer.appendChild(pokemonCard);
+
+  return pokemonContainer;
 };
-// displayCard(pokemon);
+
 export { displayCard };

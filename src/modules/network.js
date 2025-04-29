@@ -1,11 +1,9 @@
-import { displayCard } from "./ui";
-
 const pokemonURL = "https://pokeapi.co/api/v2/pokemon/";
 
-const fetchPokemonsArray = async (searchPokemon) => {
+const fetchPokemon = async (searchPokemon) => {
   if (searchPokemon) {
     const searchResult = await fetch(pokemonURL + searchPokemon);
-  
+
     if (!searchResult.ok) {
       throw new Error(`HTTP error! status:${searchResult.status}`);
     }
@@ -20,21 +18,20 @@ const fetchPokemonsArray = async (searchPokemon) => {
       const data = await res.json();
       const pokemonArray = data.results;
 
-      const promises = pokemonArray.map(async (pokemon) => {
-        console.log(pokemon.url);
-        const pokemonNewUrl = pokemon.url;
-        const res = await fetch(pokemonNewUrl);
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        const data = await res.json();
-        console.log(data);
-        displayCard(data);
-      });
+      const promises = await Promise.all(
+        pokemonArray.map(async (pokemon) => {
+          const pokemonNewUrl = pokemon.url;
+          const res = await fetch(pokemonNewUrl);
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return await res.json();
+        })
+      );
+      return promises;
     } catch (error) {
       console.error("Error fetching", error);
     }
-    return;
   }
 };
-export { fetchPokemonsArray };
+export { fetchPokemon };
