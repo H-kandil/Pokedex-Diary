@@ -30,44 +30,45 @@ window.addEventListener("DOMContentLoaded", async () => {
   await firstload();
 });
 
-// searchPokemon.addEventListener("submit", async (event) => {
-//   event.preventDefault();
-//   const pokemonWrapper = document.getElementById("pokemonWrapper");
-//   const pokemonNameOrId = searchinput.value.trim();
 
-//   if (pokemonNameOrId === "" && !pokemonWrapper) {
-//     pokemonResult.remove();
-//     await firstload();
-//   } else if (pokemonNameOrId === "") {
-//   } else {
-//     if (!pokemonWrapper) {
-//       const pokemon = await fetchPokemon(pokemonNameOrId);
-//       const pokemonCard = displayPokemon(pokemon);
+searchPokemon.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const pokemonWrapper = document.getElementById("pokemonWrapper");
+  const pokemonNameOrId = searchinput.value.trim();
 
-//       const pokemonResult = document.getElementById("pokemonResult");
-//       const pokemonCardId = document.getElementById("pokemonCardId");
+  if (pokemonNameOrId === "" && !pokemonWrapper) {
+    pokemonResult.remove();
+    await firstload();
+  } else if (pokemonNameOrId === "") {
+  } else {
+    if (!pokemonWrapper) {
+      const pokemon = await fetchPokemon(pokemonNameOrId);
+      const pokemonCard = displayPokemon(pokemon);
 
-//       pokemonCardId.remove();
-//       pokemonResult.appendChild(pokemonCard);
-//     } else {
-//       pokemonWrapper.remove();
-//       const pokemonResult = document.createElement("div");
-//       pokemonResult.id = "pokemonResult";
-//       pokemonResult.classList.add(
-//         "w-3/4",
-//         "mt-10",
-//         "flex",
-//         "flex-wrap",
-//         "place-content-center",
-//         "mx-auto",
-//         "mb-10"
-//       );
+      const pokemonResult = document.getElementById("pokemonResult");
+      const pokemonCardId = document.getElementById("pokemonCardId");
 
-//       const pokemon = await fetchPokemon(pokemonNameOrId);
-//       const pokemonCard = displayPokemon(pokemon);
+      pokemonCardId.remove();
+      pokemonResult.appendChild(pokemonCard);
+    } else {
+      pokemonWrapper.remove();
+      const pokemonResult = document.createElement("div");
+      pokemonResult.id = "pokemonResult";
+      pokemonResult.classList.add(
+        "w-3/4",
+        "mt-10",
+        "flex",
+        "flex-wrap",
+        "place-content-center",
+        "mx-auto",
+        "mb-10"
+      );
 
-//       main.appendChild(pokemonResult);
-//       pokemonResult.appendChild(pokemonCard);
-//     }
-//   }
-// });
+      const pokemon = await fetchPokemon(pokemonNameOrId);
+      const pokemonCard = displayPokemon(pokemon);
+
+      main.appendChild(pokemonResult);
+      pokemonResult.appendChild(pokemonCard);
+    }
+  }
+});
