@@ -1,6 +1,3 @@
-const pokemonContainer = document.getElementById("pokemonWrapper");
-
-// display pokemon function
 const displayCard = (pokemon) => {
   const pokemonCard = document.createElement("div");
   pokemonCard.classList.add(
@@ -79,9 +76,7 @@ const displayCard = (pokemon) => {
   pokemonInfoContainer.appendChild(pokemonInfoType);
   pokemonCard.appendChild(button);
 
-  pokemonContainer.appendChild(pokemonCard);
-
-  return pokemonContainer;
+  return pokemonCard;
 };
 
 export { displayCard };

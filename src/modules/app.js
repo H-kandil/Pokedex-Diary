@@ -30,6 +30,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   await firstload();
 });
 
+// DONT COMMENT YET
+
 // searchPokemon.addEventListener("submit", async (event) => {
 //   event.preventDefault();
 //   const pokemonWrapper = document.getElementById("pokemonWrapper");
