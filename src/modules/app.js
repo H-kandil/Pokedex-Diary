@@ -1,3 +1,3 @@
-import { fetchPokemon } from "./network.js";
+import { fetchPokemonsArray } from "./network.js";
 
-fetchPokemon();
+fetchPokemonsArray();
