@@ -7,7 +7,7 @@ const fetchPokemon = async (searchPokemon) => {
     if (!searchResult.ok) {
       throw new Error(`HTTP error! status:${searchResult.status}`);
     }
-    const data = await res.json();
+    const data = await searchResult.json();
     return data;
   } else {
     try {
