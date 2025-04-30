@@ -1,4 +1,5 @@
 const displayCard = (pokemon) => {
+   // Create the main card container for the Pokémon
   const pokemonCard = document.createElement("div");
   pokemonCard.classList.add(
     "flex",
@@ -9,27 +10,34 @@ const displayCard = (pokemon) => {
     "shadow-sm"
   );
 
+  // Create the Pokémon image element
   const pokemonImg = document.createElement("img");
   pokemonImg.src = pokemon.sprites.front_default;
   pokemonImg.classList.add("h-36", "w-36", "my-auto");
 
+  // Create the Pokémon name element
   const pokemonName = document.createElement("h2");
   pokemonName.textContent = pokemon.name;
   pokemonName.classList.add("mb-2");
 
+  // Create the Pokémon info container
   const pokemonInfoContainer = document.createElement("div");
   pokemonInfoContainer.classList.add("ml-5", "mt-5", "text-xl");
 
+
+  // Create the Pokémon ID and type elements
   const pokemonInfo = document.createElement("p");
   pokemonInfo.classList.add("mb-1");
   pokemonInfo.textContent = `ID : ${pokemon.id}`;
 
+  // Create the Pokémon type element
   const pokemonInfoType = document.createElement("p");
   pokemonInfoType.classList.add("mb-6");
   pokemonInfoType.textContent = `Type : ${pokemon.types.map(
     (t) => t.type.name
   )}`;
 
+  // Create a button element
   const button = document.createElement("button");
   button.classList.add(
     "self-start",
