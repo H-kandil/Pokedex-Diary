@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.4",
+    "autoprefixer": "^10.4.21",
+    "parcel": "^2.14.4",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4"
+  },
+  "name": "pokedex",
+  "source": [
+    "index.html",
+    "./src/pages/journal.html"
+  ],
+  "scripts": {
+    "dev": "parcel",
+    "build": "parcel build"
+  }
+}

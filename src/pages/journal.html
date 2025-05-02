@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="../style.css" rel="stylesheet" />
+    <script type="module" src="../modules/journal.js"></script>
     <title>JOURNAL</title>
   </head>
   <body class="bg-gray-200 font-mono">
@@ -13,21 +14,18 @@
           <img
             src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png"
             alt="logo of pokedex"
-            class="h-12 drop-shadow-sm"
-          />
+            class="h-12 drop-shadow-sm" />
         </div>
         <div class="flex bg-white p-1 rounded-lg">
           <input
             type="text"
             class="block w-100 pl-5 mr-1 pr-3 py-2 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="Search Favorite Pokemon...."
-            id="searchbar"
-          />
+            id="searchbar" />
           <button
             type="submit"
             class="px-4 bg-gray-400 rounded-lg text-white border-gray-300 shadow-sm border hover:bg-blue-700 duration-200 text-sm"
-            id="submit"
-          >
+            id="submit">
             Submit
           </button>
         </div>
@@ -35,7 +33,7 @@
           <ul>
             <li>
               <a
-                href="index.html"
+                href="../../index.html"
                 class="mx-3 p-3 px-5 bg-blue-300 rounded-full drop-shadow-sm text-sm hover:bg-blue-400 hover:font-bold duration-200"
                 >HOMEPAGE</a
               >
@@ -44,9 +42,10 @@
           <ul>
             <li>
               <a
-                href="journal.html"
+                href="./journal.html"
                 class="mx-3 p-3 px-5 bg-blue-300 rounded-full drop-shadow-sm text-sm hover:bg-blue-400 hover:font-bold duration-200"
-              >JOURNAL</a>
+                >JOURNAL</a
+              >
             </li>
           </ul>
         </nav>
@@ -57,35 +56,7 @@
       <h2 class="uppercase w-3/4 mx-auto mt-1 text-2xl">My Favorite Pokemon</h2>
       <div
         id="pokemonWrapper"
-        class="w-3/4 mt-10 flex flex-wrap place-content-center mx-auto">
-       <!-- <div 
-          id="pokemonContainer"
-          class="flex bg-white min-w-100 m-2 rounded-xl shadow-sm">
-          <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-            alt="Pokemon-Image-Front"
-            id="pokemonImg"
-            class="h-36 w-36 my-auto" />
-          <div id="pokemonInfoContainer" class="ml-5 mt-5">
-            <p class="text-sm">ID: 32</p>
-            <h3 class="mb-2">DITTO</h3>
-            <p>TYPE:</p>
-            <p class="mb-6">NORMAL</p>
-          </div>
-          <div id="noteContainer" class="m-4 flex flex-col items-center">
-            <textarea placeholder="Add Note.." cols="14"class="border border-gray-300 m-2 p-1"></textarea>
-            <button type="button" class="bg-blue-300 p-3 rounded-lg w-30 hover:not-focus:bg-blue-400">Save</button>
-          </div>
-          <button
-            id="pokemonAdd"
-            class="self-start ml-auto mt-2 mr-2 bg-red-300 p-2 rounded-lg hover:bg-red-500 duration-200">
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/399/399274.png"
-              alt="cancle image"
-              class="w-8 h-8 invert" />
-          </button>
-        </div>  -->
+        class="w-3/4 mt-10 flex flex-wrap place-content-center mx-auto"></div>
     </main>
-    <script src="/Src/journal.js"></script>
   </body>
 </html>
