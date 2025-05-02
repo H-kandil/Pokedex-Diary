@@ -1,8 +1,8 @@
 import { fetchPokemon } from "./network.js";
 import { displayCard } from "./ui.js";
 
+// Function to handle the initial loading of Pokémon data
 const main = document.querySelector("main");
-
 const firstload = async () => {
   try {
     const pokemonWrapper = document.createElement("div");
@@ -17,7 +17,7 @@ const firstload = async () => {
       "mb-10"
     );
     main.appendChild(pokemonWrapper);
-
+// Fetch Pokémon data from the API
     const pokemons = await fetchPokemon();
     pokemons.forEach((pokemon) => {
       const pokemonCard = displayCard(pokemon);
@@ -25,13 +25,12 @@ const firstload = async () => {
     });
   } catch (err) {}
 };
-
+// Function to handle the search functionality
 window.addEventListener("DOMContentLoaded", async () => {
   await firstload();
 });
-
 const searchPokemon = document.getElementById("searchbar");
-
+// Add event listener to the search form
 searchPokemon.addEventListener("submit", async (event) => {
   event.preventDefault();
   const pokemonWrapper = document.getElementById("pokemonWrapper");
@@ -64,9 +63,11 @@ searchPokemon.addEventListener("submit", async (event) => {
         "mb-10"
       );
 
+      // Create a new Pokémon card container
       const pokemon = await fetchPokemon(pokemonNameOrId);
       const pokemonCard = displayCard(pokemon);
 
+     // Create a new Pokémon card and append it to the result container 
       main.appendChild(pokemonResult);
       pokemonResult.appendChild(pokemonCard);
     }

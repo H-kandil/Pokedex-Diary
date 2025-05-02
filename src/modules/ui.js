@@ -72,10 +72,12 @@ const displayCard = (pokemon) => {
     localStorage.setItem("save", JSON.stringify(save));
   });
 
+  // Create an image element for the button
   const image = document.createElement("img");
   image.src = "https://cdn-icons-png.flaticon.com/512/105/105220.png";
   image.classList.add("w-8", "h-8", "invert");
 
+  // Append the image to the button and the button to the card
   button.appendChild(image);
   pokemonCard.appendChild(pokemonImg);
   pokemonCard.appendChild(pokemonInfoContainer);
