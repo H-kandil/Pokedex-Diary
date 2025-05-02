@@ -1,9 +1,11 @@
 const pokemonURL = "https://pokeapi.co/api/v2/pokemon/";
 
+// Function to fetch Pokémon data from the API
 const fetchPokemon = async (searchPokemon) => {
   if (searchPokemon) {
     const searchResult = await fetch(pokemonURL + searchPokemon);
 
+    // Check if the response is ok 
     if (!searchResult.ok) {
       throw new Error(`HTTP error! status:${searchResult.status}`);
     }
@@ -18,6 +20,7 @@ const fetchPokemon = async (searchPokemon) => {
       const data = await res.json();
       const pokemonArray = data.results;
 
+      // Create an array of promises to fetch each Pokémon's details
       const promises = await Promise.all(
         pokemonArray.map(async (pokemon) => {
           const pokemonNewUrl = pokemon.url;

@@ -3,8 +3,9 @@ window.addEventListener("DOMContentLoaded", () => {
   pokemonStored.forEach((pokemon) => {
     console.log(pokemon);
 
+    // Create the Pokémon wrapper
     const pokemonContainer = document.createElement("div");
-
+ 
     const pokemonForm = document.createElement("form");
     pokemonForm.classList.add(
       "flex",
@@ -16,17 +17,21 @@ window.addEventListener("DOMContentLoaded", () => {
       "shadow-sm"
     );
 
+    // Create the Pokémon image element
     const pokemonImg = document.createElement("img");
     pokemonImg.src = pokemon.image;
     pokemonImg.classList.add("h-36", "w-36", "my-auto", "ml-2");
-
+    
+    // Create the Pokémon name element
     const pokemonInfoContainer = document.createElement("div");
     pokemonInfoContainer.classList.add("ml-2", "mt-5", "mb-6", "text-xl");
 
+    // Create the Pokémon ID element
     const pokemonID = document.createElement("p");
     pokemonID.classList.add("text-sm");
     pokemonID.textContent = `ID: ${pokemon.id}`;
 
+    // Create the Pokémon type element
     const pokemonName = document.createElement("h2");
     pokemonName.textContent = pokemon.name;
     pokemonName.classList.add("uppercase", "mb-2");
@@ -39,6 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
     pokemonType.classList.add("uppercase");
     pokemonType.textContent = pokemon.type;
 
+    // Create the Pokémon notes textarea
     const pokemonNotes = document.createElement("textarea");
     pokemonNotes.name = "notes";
     pokemonNotes.id = pokemon.id + "notes";
@@ -57,6 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
       "uppercase"
     );
 
+    // Create the submit button
     const submitNotes = document.createElement("button");
     submitNotes.type = "button";
     submitNotes.value = "submit";
@@ -74,6 +81,7 @@ window.addEventListener("DOMContentLoaded", () => {
       "duration-200"
     );
 
+    // Append elements to the DOM
     pokemonForm.appendChild(pokemonImg);
     pokemonContainer.appendChild(pokemonForm);
     pokemonForm.appendChild(pokemonInfoContainer);
@@ -85,10 +93,12 @@ window.addEventListener("DOMContentLoaded", () => {
     pokemonForm.appendChild(pokemonNotes);
     pokemonForm.appendChild(submitNotes);
 
+    // Add event listener to the submit button
     submitNotes.addEventListener("click", () => {
       addNotes(pokemon.id);
     });
 
+    // Function to add notes to local storage
     function addNotes(id) {
       const pokemonStored = JSON.parse(localStorage.getItem("save")) || [];
       const updatedPokemon = pokemonStored.map((pokemon) => {
